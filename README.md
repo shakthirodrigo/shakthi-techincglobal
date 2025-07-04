@@ -74,7 +74,7 @@ SEO: Structured data + Meta optimization
 ### 📁 Project Structure
 
 ```text
-techincglobal-redesign/
+shakthi-techincglobal/
 ├── 🎨 src/components/
 │   ├── Hero.astro           # 4-slide carousel with animations
 │   ├── About.astro          # Company story and values
@@ -103,8 +103,8 @@ techincglobal-redesign/
 
 ```bash
 # Clone this showcase project
-git clone https://github.com/shakthirodrigo/techincglobal-redesign
-cd techincglobal-redesign
+git clone https://github.com/shakthirodrigo/shakthi-techincglobal
+cd shakthi-techincglobal
 
 # Install dependencies
 npm install
