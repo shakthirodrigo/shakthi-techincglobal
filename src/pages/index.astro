@@ -1,0 +1,268 @@
+---
+// src/pages/index.astro
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import About from '@/components/About.astro';
+import Stats from '@/components/Stats.astro';
+import Features from '@/components/Features.astro';
+import Services from '@/components/Services.astro';
+import Products from '@/components/Products.astro';
+import Partners from '@/components/Partners.astro';
+import Contact from '@/components/Contact.astro';
+import { SITE_CONFIG, SEO_KEYWORDS, DEFAULT_META_DESCRIPTION } from '@/utils/constants';
+
+// SEO data for the homepage
+const seoTitle = SITE_CONFIG.title;
+const seoDescription = DEFAULT_META_DESCRIPTION;
+const seoKeywords = SEO_KEYWORDS.join(', ');
+---
+
+<Layout 
+  title={seoTitle}
+  description={seoDescription}
+>
+  <!-- SEO Keywords Meta Tag -->
+  <meta name="keywords" content={seoKeywords} slot="head" />
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:url" content={SITE_CONFIG.url} slot="head" />
+  <meta property="og:site_name" content={SITE_CONFIG.name} slot="head" />
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:site" content="@techincglobal" slot="head" />
+  <meta name="twitter:creator" content="@techincglobal" slot="head" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={SITE_CONFIG.url} slot="head" />
+  
+  <!-- Structured Data for Organization -->
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Techincglobal Consultancy (Pvt) Ltd",
+      "url": "https://techincglobal.com",
+      "logo": "https://techincglobal.com/files/Asset 4@4x-8.webp",
+      "description": "Boutique service delivery organization delivering best of breed ERP solutions with 20+ years of experience",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "No. 289/7 d, Lake Road",
+        "addressLocality": "Malabe",
+        "addressCountry": "Sri Lanka"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+94-707-978-978",
+        "contactType": "customer service",
+        "email": "info@techincglobal.com"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/techincglobal",
+        "https://twitter.com/techincglobal",
+        "https://www.facebook.com/techincglobal"
+      ],
+      "foundingDate": "2003",
+      "numberOfEmployees": "11",
+      "industry": "Enterprise Software Solutions",
+      "keywords": "ERP Software, Enterprise Resource Planning, Business Automation, Frappe ERP, Open Source ERP",
+      "offers": [
+        {
+          "@type": "Service",
+          "name": "NXTGEN ERP Implementation",
+          "description": "Complete ERP system implementation for business operations management"
+        },
+        {
+          "@type": "Service", 
+          "name": "Business Process Automation",
+          "description": "Workflow automation and integration platform with no coding required"
+        },
+        {
+          "@type": "Service",
+          "name": "ERP Consultation",
+          "description": "Expert consultation for ERP implementation and business process reengineering"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Main Content Sections -->
+  <Hero />
+  <About />
+  <Stats />
+  <Features />
+  <Services />
+  <Products />
+  <Partners />
+  <Contact />
+</Layout>
+
+<!-- Page-specific Scripts -->
+<script>
+  // Page loading performance tracking
+  window.addEventListener('load', () => {
+    const loadTime = performance.now();
+    console.log(`Page loaded in ${Math.round(loadTime)}ms`);
+  });
+
+  // Scroll progress indicator
+  function updateScrollProgress() {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    // Update progress bar if it exists
+    const progressBar = document.querySelector('.scroll-progress');
+    if (progressBar) {
+      progressBar.style.width = `${scrollPercent}%`;
+    }
+  }
+
+  // Throttled scroll listener
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Intersection Observer for section animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        
+        // Update active navigation
+        const sectionId = entry.target.id;
+        if (sectionId) {
+          updateActiveNavigation(sectionId);
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Observe all main sections
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
+  });
+
+  // Update active navigation item
+  function updateActiveNavigation(activeId: string) {
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    navLinks.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (href === `#${activeId}`) {
+        link.classList.add('text-blue-600', 'font-semibold');
+        link.classList.remove('text-slate-600');
+      } else {
+        link.classList.remove('text-blue-600', 'font-semibold');
+        link.classList.add('text-slate-600');
+      }
+    });
+  }
+
+  // Smooth scroll polyfill for older browsers
+  if (!('scrollBehavior' in document.documentElement.style)) {
+    const smoothScrollPolyfill = document.createElement('script');
+    smoothScrollPolyfill.src = 'https://polyfill.io/v3/polyfill.min.js?features=smoothscroll';
+    document.head.appendChild(smoothScrollPolyfill);
+  }
+
+  // Analytics tracking (placeholder for Google Analytics, etc.)
+  function trackPageView() {
+    // Google Analytics tracking would go here
+    // gtag('config', 'GA_MEASUREMENT_ID', {
+    //   page_title: document.title,
+    //   page_location: window.location.href
+    // });
+  }
+
+  // Track scroll depth for analytics
+  let maxScrollDepth = 0;
+  function trackScrollDepth() {
+    const scrollPercent = Math.round((window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+    
+    if (scrollPercent > maxScrollDepth) {
+      maxScrollDepth = scrollPercent;
+      
+      // Track milestone percentages
+      if ([25, 50, 75, 90].includes(scrollPercent)) {
+        console.log(`Scroll depth: ${scrollPercent}%`);
+        // Analytics tracking would go here
+      }
+    }
+  }
+
+  window.addEventListener('scroll', trackScrollDepth);
+
+  // Error boundary for JavaScript errors
+  window.addEventListener('error', (event) => {
+    console.error('JavaScript error:', event.error);
+    // Error tracking would go here
+  });
+
+  // Contact form success tracking
+  document.addEventListener('contact-form-success', () => {
+    console.log('Contact form submitted successfully');
+    // Conversion tracking would go here
+  });
+</script>
+
+<!-- Optional: Add scroll progress bar -->
+<div class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+  <div class="scroll-progress h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-150 ease-out" style="width: 0%"></div>
+</div>
+
+<style>
+  /* Page-specific styles */
+  .scroll-progress {
+    transform-origin: left;
+  }
+  
+  /* Section animation styles */
+  section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Ensure first section (hero) is visible immediately */
+  section:first-of-type {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Smooth focus transitions */
+  * {
+    scroll-margin-top: 100px; /* Account for fixed header */
+  }
+  
+  /* Print styles */
+  @media print {
+    .fixed {
+      display: none;
+    }
+    
+    section {
+      opacity: 1;
+      transform: none;
+      page-break-inside: avoid;
+    }
+  }
+</style>

@@ -1,0 +1,183 @@
+---
+// src/components/Hero.astro
+---
+
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 pt-20">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1.5"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+  
+  <!-- Floating Elements -->
+  <div class="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-float"></div>
+  <div class="absolute top-40 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl animate-float-delayed"></div>
+  <div class="absolute bottom-20 left-20 w-24 h-24 bg-indigo-500/20 rounded-full blur-xl animate-float"></div>
+  
+  <!-- Main Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+      
+      <!-- Hero Content -->
+      <div class="flex-1 text-center lg:text-left">
+        <!-- Slide Navigation -->
+        <div class="flex justify-center lg:justify-start space-x-4 mb-8">
+          <button class="slide-nav-btn w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300" data-slide="0"></button>
+          <button class="slide-nav-btn w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-all duration-300" data-slide="1"></button>
+          <button class="slide-nav-btn w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-all duration-300" data-slide="2"></button>
+          <button class="slide-nav-btn w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-all duration-300" data-slide="3"></button>
+        </div>
+        
+        <!-- Slides Container -->
+        <div class="hero-slides">
+          <!-- Slide 1 -->
+          <div class="slide active opacity-100 transition-opacity duration-500">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <span class="block">NXTGEN ERP</span>
+              <span class="gradient-text block">ERP Made Easy</span>
+            </h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl">
+              Presenting the Next Generation of ERP software
+            </p>
+          </div>
+          
+          <!-- Slide 2 -->
+          <div class="slide opacity-0 absolute top-0 left-0 transition-opacity duration-500">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <span class="gradient-text block">License Free</span>
+              <span class="block">Software</span>
+            </h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl">
+              Pay for our expertise, We take away the burden of costly license commitments.
+            </p>
+          </div>
+          
+          <!-- Slide 3 -->
+          <div class="slide opacity-0 absolute top-0 left-0 transition-opacity duration-500">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <span class="block">Automate your</span>
+              <span class="gradient-text block">Administration</span>
+              <span class="block">and Sales Processes</span>
+            </h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl">
+              Practical Digitization of manual processes by an excellent consultation team
+            </p>
+          </div>
+          
+          <!-- Slide 4 -->
+          <div class="slide opacity-0 absolute top-0 left-0 transition-opacity duration-500">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <span class="gradient-text block">Collabsee</span>
+              <span class="block text-3xl sm:text-4xl lg:text-5xl">Project Management | Time Management & Reporting</span>
+            </h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl">
+              Manage your projects, time sheets and tasks - A Techincglobal partner solution
+            </p>
+          </div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#features" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 inline-flex items-center justify-center">
+            Discover Features
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a href="#about" class="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:bg-white/20 hover:scale-105 inline-flex items-center justify-center">
+            Learn More
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hero Image/Visual -->
+      <div class="flex-1 relative">
+        <div class="relative max-w-md mx-auto">
+          <!-- Floating Cards -->
+          <div class="absolute -top-4 -left-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 animate-float">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+              <span class="text-white text-sm font-medium">25 Clients</span>
+            </div>
+          </div>
+          
+          <div class="absolute -top-4 -right-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 animate-float-delayed">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+              <span class="text-white text-sm font-medium">26 Projects</span>
+            </div>
+          </div>
+          
+          <div class="absolute -bottom-4 -left-4 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 animate-float">
+            <div class="flex items-center space-x-3">
+              <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
+              <span class="text-white text-sm font-medium">5250 Hours Support</span>
+            </div>
+          </div>
+          
+          <!-- Central Visual -->
+          <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+            <div class="text-center">
+              <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center">
+                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-2">ERP Excellence</h3>
+              <p class="text-blue-100">Streamlined Business Processes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href="#about" class="text-white/70 hover:text-white transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<script>
+  // Hero slideshow functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const navButtons = document.querySelectorAll('.slide-nav-btn');
+  
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('opacity-100');
+        slide.classList.remove('opacity-0');
+      } else {
+        slide.classList.add('opacity-0');
+        slide.classList.remove('opacity-100');
+      }
+    });
+    
+    navButtons.forEach((btn, i) => {
+      if (i === index) {
+        btn.classList.add('bg-white');
+        btn.classList.remove('bg-white/30');
+      } else {
+        btn.classList.add('bg-white/30');
+        btn.classList.remove('bg-white');
+      }
+    });
+  }
+  
+  // Auto-advance slides
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 5000);
+  
+  // Manual navigation
+  navButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      currentSlide = index;
+      showSlide(currentSlide);
+    });
+  });
+</script>

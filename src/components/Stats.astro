@@ -1,0 +1,105 @@
+---
+// src/components/Stats.astro
+---
+
+<section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Clients -->
+      <div class="text-center group">
+        <div class="mb-4">
+          <div class="text-5xl lg:text-6xl font-bold text-white counter" data-target="25">0</div>
+        </div>
+        <h3 class="text-xl font-semibold text-blue-100">Clients</h3>
+        <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full group-hover:bg-white/50 transition-colors"></div>
+      </div>
+      
+      <!-- Projects -->
+      <div class="text-center group">
+        <div class="mb-4">
+          <div class="text-5xl lg:text-6xl font-bold text-white counter" data-target="26">0</div>
+        </div>
+        <h3 class="text-xl font-semibold text-blue-100">Projects</h3>
+        <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full group-hover:bg-white/50 transition-colors"></div>
+      </div>
+      
+      <!-- Hours of Support -->
+      <div class="text-center group">
+        <div class="mb-4">
+          <div class="text-5xl lg:text-6xl font-bold text-white counter" data-target="5250">0</div>
+        </div>
+        <h3 class="text-xl font-semibold text-blue-100">Hours Of Support</h3>
+        <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full group-hover:bg-white/50 transition-colors"></div>
+      </div>
+      
+      <!-- Team Members -->
+      <div class="text-center group">
+        <div class="mb-4">
+          <div class="text-5xl lg:text-6xl font-bold text-white counter" data-target="11">0</div>
+        </div>
+        <h3 class="text-xl font-semibold text-blue-100">Hard Workers</h3>
+        <div class="w-16 h-1 bg-white/30 mx-auto mt-3 rounded-full group-hover:bg-white/50 transition-colors"></div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  // Counter animation function
+  function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target') || '0');
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      element.textContent = Math.floor(current).toString();
+    }, 16);
+  }
+
+  // Initialize counters when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    // Find the stats section specifically
+    const statsSection = document.querySelector('section[class*="bg-gradient-to-r"]');
+    
+    if (statsSection) {
+      // Create intersection observer for triggering animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('.counter');
+            counters.forEach((counter) => {
+              if (!counter.classList.contains('animated')) {
+                counter.classList.add('animated');
+                animateCounter(counter);
+              }
+            });
+          }
+        });
+      }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      observer.observe(statsSection);
+    } else {
+      // Fallback: animate immediately if observer fails
+      setTimeout(() => {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach((counter) => {
+          if (!counter.classList.contains('animated')) {
+            counter.classList.add('animated');
+            animateCounter(counter);
+          }
+        });
+      }, 1000);
+    }
+  });
+</script>

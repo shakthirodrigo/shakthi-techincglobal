@@ -1,0 +1,73 @@
+# Robots.txt for Techincglobal.com
+# Allow all search engines to crawl the entire site
+
+User-agent: *
+Allow: /
+
+# Disallow crawling of admin or sensitive areas
+# (Add these if you have admin panels or private areas in the future)
+# Disallow: /admin/
+# Disallow: /api/
+# Disallow: /private/
+
+# Allow crawling of important files
+Allow: /files/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.svg
+Allow: /*.ico
+
+# Sitemap location (when you create one)
+Sitemap: https://techincglobal.com/sitemap.xml
+
+# Crawl-delay (optional - removes this if you want faster crawling)
+# Crawl-delay: 1
+
+# Specific instructions for major search engines
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Facebook (for Open Graph previews)
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter (for Twitter Card previews)
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn (for LinkedIn post previews)
+User-agent: LinkedInBot
+Allow: /
+
+# Block known bad bots (optional)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Note: This robots.txt allows full access to your site
+# Modify the rules above based on your specific needs
